@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@theme {
+    --breakpoint-xs: 25rem;
+    --color-custom-white: oklch(1 0 0);
+    --color-custom-black: oklch(0.2178 0 0);
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    max-width: 100vw;
+
+    a,
+    button {
+        cursor: pointer;
+    }
+}
+
+::selection {
+    @apply bg-blue-500/30 dark:bg-purple-400/30;
+}
+
+textarea {
+    field-sizing: content;
+}
