@@ -63,30 +63,8 @@ function App() {
         <>
             <div className='overflow-hidden'>
                 <div className="absolute top-0 left-0 right-0 bottom-0 w-dvw h-dvh -z-1" aria-hidden="true">
-                    <Grainient
-                        color1="#FF9FFC"
-                        color2="#5227FF"
-                        color3="#B19EEF"
-                        timeSpeed={0.25}
-                        colorBalance={0}
-                        warpStrength={1}
-                        warpFrequency={5}
-                        warpSpeed={2}
-                        warpAmplitude={50}
-                        blendAngle={0}
-                        blendSoftness={0.05}
-                        rotationAmount={500}
-                        noiseScale={2}
-                        grainAmount={0.1}
-                        grainScale={2}
-                        grainAnimated={false}
-                        contrast={1.5}
-                        gamma={1}
-                        saturation={1}
-                        centerX={0}
-                        centerY={0}
-                        zoom={0.9}
-                    /></div>
+                    <Grainient/>
+                </div>
                 <main
                     className="flex items-center max-h-dvh overflow-auto gap-6 p-2 h-full w-dvw flex-col lg:flex-row lg:items-end lg:justify-center lg: py-12">
                     <fieldset className="max-w-132 w-full">
@@ -177,11 +155,11 @@ function App() {
                     {...{open, onClose, setOpen}}
                     className="bg-custom-white flex gap-4 rounded-xl p-4"
                 >
-                    <button
-                        className="flex items-center gap-2 rounded-lg bg-custom-black px-4 py-2 text-custom-white hover:opacity-50 active:scale-98 transition-all">
+                    <a href="https://github.com/Thomasgsn/qurcode/" target="_blank"
+                       className="flex items-center gap-2 rounded-lg bg-custom-black px-4 py-2 text-custom-white hover:opacity-50 active:scale-98 transition-all">
                         <FaGithub/>
                         <span>GitHub</span>
-                    </button>
+                    </a>
                 </Modal>
             </div>
         </>
