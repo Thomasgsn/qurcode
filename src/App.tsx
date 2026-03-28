@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import {FaGithub} from "react-icons/fa";
 import {MdQuestionMark} from "react-icons/md";
 import Grainient from "./components/Grainient";
 import {Modal, ModalTrigger} from "./components/Modal";
@@ -176,7 +177,11 @@ function App() {
                     {...{open, onClose, setOpen}}
                     className="bg-custom-white flex gap-4 rounded-xl p-4"
                 >
-                    <p>test</p>
+                    <button
+                        className="flex items-center gap-2 rounded-lg bg-custom-black px-4 py-2 text-custom-white hover:opacity-50 active:scale-98 transition-all">
+                        <FaGithub/>
+                        <span>GitHub</span>
+                    </button>
                 </Modal>
             </div>
         </>
