@@ -1,4 +1,4 @@
-import React, {Dispatch, ReactNode, SetStateAction, useEffect} from "react";
+import React, { Dispatch, ReactNode, SetStateAction, useCallback, useEffect } from "react";
 
 interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
     open: boolean;
@@ -8,17 +8,17 @@ interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const Modal = ({
-                          open,
-                          setOpen,
-                          onClose,
-                          children,
-                          ...props
-                      }: ModalProps) => {
+    open,
+    setOpen,
+    onClose,
+    children,
+    ...props
+}: ModalProps) => {
 
-    const close = () => {
+    const close = useCallback(() => {
         setOpen(false);
         onClose?.();
-    };
+    }, [onClose, setOpen]);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -40,7 +40,7 @@ export const Modal = ({
             document.body.style.paddingRight = "";
             document.removeEventListener("keydown", handleKeyDown);
         };
-    }, [open]);
+    }, [close, open]);
 
     return (
         <div
@@ -48,8 +48,8 @@ export const Modal = ({
             className={`
                 fixed inset-0 z-50 flex items-center justify-center transition-all
                 ${open
-                ? "visible opacity-100 bg-black/70"
-                : "invisible opacity-0 pointer-events-none"}
+                    ? "visible opacity-100 bg-black/70"
+                    : "invisible opacity-0 pointer-events-none"}
             `}
         >
             <div
@@ -73,7 +73,7 @@ interface ModalTriggerProps extends React.HTMLAttributes<HTMLButtonElement> {
     onOpen: () => void;
 }
 
-export const ModalTrigger = ({children, onOpen, ...props}: ModalTriggerProps) => (
+export const ModalTrigger = ({ children, onOpen, ...props }: ModalTriggerProps) => (
     <button onClick={onOpen} {...props}>
         {children}
     </button>

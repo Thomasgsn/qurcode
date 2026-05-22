@@ -2,13 +2,13 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router";
-import { StrictMode } from 'react'
+import { lazy, StrictMode, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 
-import App from './App.tsx'
-import DisplayQR from './DisplayQR.tsx'
-
 import './assets/style/index.css'
+
+const App = lazy(() => import('./App.tsx'));
+const DisplayQR = lazy(() => import('./DisplayQR.tsx'));
 
 const router = createBrowserRouter([
   {
@@ -23,8 +23,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <main className="min-h-screen min-w-screen flex items-center justify-center flex-col gap-2">
+    <Suspense fallback={<div className="min-h-screen min-w-screen bg-[linear-gradient(135deg,#ff9ffc_0%,#5227ff_52%,#b19eef_100%)]" />}>
       <RouterProvider router={router} />
-    </main>
+    </Suspense>
   </StrictMode>,
 )
